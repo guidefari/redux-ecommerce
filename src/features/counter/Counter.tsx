@@ -1,5 +1,6 @@
 import { useState } from "react";
 
+import { Button } from "@mui/material";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import styles from "./Counter.module.css";
 import {
@@ -11,7 +12,6 @@ import {
 	selectCount,
 	selectStatus,
 } from "./counterSlice";
-import { Button } from "@mui/material";
 
 export const Counter = () => {
 	const dispatch = useAppDispatch();

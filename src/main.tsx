@@ -5,8 +5,8 @@ import App from "./App";
 import { store } from "./app/store";
 import "./index.css";
 import "./fonts";
-import { CssBaseline } from "@mui/material";
 import { ThemeProvider } from "@emotion/react";
+import { CssBaseline } from "@mui/material";
 import theme from "./theme";
 
 const container = document.getElementById("root");
