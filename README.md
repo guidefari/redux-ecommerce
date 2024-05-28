@@ -13,3 +13,5 @@ As seen on [Redux docs](https://react-redux.js.org/introduction/getting-started)
 - `build` - build for production
 - `preview` - locally preview production build
 - `test` - launch test runner
+
+## Architectural choices

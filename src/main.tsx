@@ -4,6 +4,10 @@ import { Provider } from "react-redux";
 import App from "./App";
 import { store } from "./app/store";
 import "./index.css";
+import "./fonts";
+import { CssBaseline } from "@mui/material";
+import { ThemeProvider } from "@emotion/react";
+import theme from "./theme";
 
 const container = document.getElementById("root");
 
@@ -13,7 +17,10 @@ if (container) {
 	root.render(
 		<React.StrictMode>
 			<Provider store={store}>
-				<App />
+				<ThemeProvider theme={theme}>
+					<CssBaseline />
+					<App />
+				</ThemeProvider>
 			</Provider>
 		</React.StrictMode>,
 	);
