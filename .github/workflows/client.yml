@@ -26,9 +26,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: oven-sh/setup-bun@v1
-      # - name: Biome
-      #   run: cd client && bun biome ci .
+      - name: Biome
+        run: cd client && bun run ci:quality
       - name: Build
-        run: cd client && bun build
+        run: cd client && bun run build
       - name: Run Tests
-        run: cd client && bun test
+        run: cd client && bun run test
