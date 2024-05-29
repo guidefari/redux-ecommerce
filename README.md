@@ -35,15 +35,15 @@ bun run dev:server
 # Todo
 
 ## endpoints
-  - List All Products: GET
+  - ✅List All Products: GET 
     - filter - can be handled on frontend?
     - sort - can be handled on frontend?
-  - List Featured products: GET
-  - Single Product details: GET, :id
-  - List categories: GET
-  - List All products in category: GET, :id
+  - ✅List Featured products: GET 
+  - ✅Single Product details: GET, :id
+  - ✅List categories: GET
+  - ✅List All products in category: GET, :id
   - Checkout: POST
-  - List Discounted Products: GET
+  - ✅List Discounted Products: GET
 
 ## UX
 - Bandcamp inspired checkout modal?

@@ -44,5 +44,5 @@ export type Card = {
 export type Category = {
 	name: string;
 	id: string;
-	products: Array<Product>;
+	products: Array<string>;
 };

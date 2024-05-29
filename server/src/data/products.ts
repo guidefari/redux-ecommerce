@@ -8,7 +8,7 @@ export const products: Product[] = [
 		price: 10,
 		images: ["image1.jpg"],
 		relatedProducts: ["1"],
-		discount: 5,
+		discount: 0,
 		featured: true,
 	},
 	{
@@ -73,7 +73,7 @@ export const products: Product[] = [
 		price: 80,
 		images: ["image8.jpg"],
 		relatedProducts: ["8"],
-		discount: 5,
+		discount: 0,
 	},
 	{
 		id: "9",
@@ -91,7 +91,7 @@ export const products: Product[] = [
 		price: 100,
 		images: ["image10.jpg"],
 		relatedProducts: ["0"],
-		discount: 10,
+		discount: 0,
 		featured: true,
 	},
 	{
@@ -128,7 +128,7 @@ export const products: Product[] = [
 		price: 140,
 		images: ["image14.jpg"],
 		relatedProducts: ["4"],
-		discount: 30,
+		discount: 0,
 	},
 	{
 		id: "15",
@@ -193,4 +193,11 @@ export function getProductById(id: string): Product | undefined {
 
 export function getFeaturedProducts(): Product[] {
 	return products.filter((p) => p.featured);
+}
+export function getDiscountedProducts(): Product[] {
+	return products.filter((p) => p.discount > 0);
+}
+
+export function getManyProducts(ids: string[]): Product[] {
+	return products.filter((p) => ids.includes(p.id));
 }
