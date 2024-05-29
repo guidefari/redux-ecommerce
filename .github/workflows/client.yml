@@ -1,0 +1,21 @@
+name: Build and test
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+jobs:
+  client:
+    timeout-minutes: 5
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v1
+      - name: install
+        run: bun install
+      - name: Biome
+        run: bun run quality:client
+      - name: Build
+        run: bun run build:client
+      - name: Run Tests
+        run: bun run test:client
