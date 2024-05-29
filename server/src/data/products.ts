@@ -190,3 +190,7 @@ export const products: Product[] = [
 export function getProductById(id: string): Product | undefined {
 	return products.find((p) => p.id === id);
 }
+
+export function getFeaturedProducts(): Product[] {
+	return products.filter((p) => p.featured);
+}
