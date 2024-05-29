@@ -5,35 +5,16 @@ on:
   pull_request:
     branches: [main]
 jobs:
-  # quality:
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Checkout
-  #       uses: actions/checkout@v4
-  #       with:
-  #         path: client
-  #     - name: Setup Biome
-  #       uses: biomejs/setup-biome@v2
-  #       with:
-  #         version: latest
-  #     - name: Run Biome
-  #       run: biome ci .
-
   client:
-    # needs: test_setup
     timeout-minutes: 5
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        # with:
-        #   path: client
       - uses: oven-sh/setup-bun@v1
-      # - name: Biome
-      #   run: cd client && bun run ci:quality
-      - name: pwd
-        run: pwd && ls
       - name: install
         run: bun install
+      - name: Biome
+        run: bun run quality:client
       - name: Build
         run: bun run build:client
       - name: Run Tests

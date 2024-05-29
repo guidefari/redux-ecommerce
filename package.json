@@ -6,9 +6,10 @@
     ],
     "scripts": {
       "dev:client": "cd client && bun run dev",
-      "dev:server": "cd server && bun run dev",
       "build:client": "cd client && bun run build",
-      "test:client": "cd client && bun run test"
+      "quality:client": "cd client && bun run quality-check",
+      "test:client": "cd client && bun run test",
+      "dev:server": "cd server && bun run dev"
     },
     "devDependencies": {
       "bun-types": "latest"

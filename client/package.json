@@ -12,7 +12,7 @@
 		"format": "biome format --write .",
 		"lint": "biome lint .",
 		"lint:fix": "biome lint . --apply",
-		"ci:quality": "biome ci .",
+		"quality-check": "biome ci .",
 		"type-check": "tsc --noEmit"
 	},
 	"dependencies": {
