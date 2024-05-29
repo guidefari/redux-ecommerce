@@ -9,6 +9,7 @@ export const products: Product[] = [
 		images: ["image1.jpg"],
 		relatedProducts: ["1"],
 		discount: 5,
+		featured: true,
 	},
 	{
 		id: "2",
@@ -36,6 +37,7 @@ export const products: Product[] = [
 		images: ["image4.jpg"],
 		relatedProducts: ["4"],
 		discount: 15,
+		featured: true,
 	},
 	{
 		id: "5",
@@ -90,6 +92,7 @@ export const products: Product[] = [
 		images: ["image10.jpg"],
 		relatedProducts: ["0"],
 		discount: 10,
+		featured: true,
 	},
 	{
 		id: "11",
@@ -171,6 +174,7 @@ export const products: Product[] = [
 		images: ["image19.jpg"],
 		relatedProducts: ["9"],
 		discount: 20,
+		featured: true,
 	},
 	{
 		id: "20",
@@ -182,3 +186,7 @@ export const products: Product[] = [
 		discount: 25,
 	},
 ];
+
+export function getProductById(id: string): Product | undefined {
+	return products.find((p) => p.id === id);
+}

@@ -6,6 +6,7 @@ export type Product = {
 	images: Array<string>;
 	relatedProducts: Array<string>;
 	discount: number;
+	featured?: boolean;
 };
 
 export type ProductResponse = {
