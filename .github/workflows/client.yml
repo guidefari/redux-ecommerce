@@ -25,8 +25,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with:
-          path: client
+        # with:
+        #   path: client
       - uses: oven-sh/setup-bun@v1
       # - name: Biome
       #   run: cd client && bun run ci:quality
