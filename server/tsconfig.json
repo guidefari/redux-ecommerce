@@ -5,7 +5,9 @@
 		"jsx": "react-jsx",
 		"jsxImportSource": "hono/jsx",
 		"types": ["bun-types"],
-
+		"paths": {
+			"@shared/*": ["../shared/*"]
+		},
 		"outDir": "dist"
 	}
 }

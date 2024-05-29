@@ -29,3 +29,15 @@ bun run dev:server
 - Mark Erikson & Jason Lengstorf:
   - [Learn modern redux](https://www.youtube.com/watch?v=9zySeP5vH9c&pp=ygUcbWFyayBlcmlrc29uIGphc29uIGxlbmdzdG9yZg%3D%3D)
   - [Redux in 2023](https://www.youtube.com/watch?v=MLbXjCddf3A&pp=ygUcbWFyayBlcmlrc29uIGphc29uIGxlbmdzdG9yZg%3D%3D)
+
+## Todo
+- endpoints
+  - List All Products: GET
+    - filter
+    - sort
+  - List Featured products: GET
+  - Single Product details: GET, :id
+  - List categories: GET
+  - List All products in category: GET, :id
+  - Checkout: POST
+  - List Discounted Products: GET
