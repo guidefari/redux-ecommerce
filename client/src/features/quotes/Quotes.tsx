@@ -9,6 +9,7 @@ export const Quotes = () => {
 	// Using a query hook automatically fetches data and returns query values
 	const { data, isError, isLoading, isSuccess } =
 		useGetQuotesQuery(numberOfQuotes);
+	console.log("data:", data);
 
 	if (isError) {
 		return (
