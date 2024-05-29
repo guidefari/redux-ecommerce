@@ -30,14 +30,20 @@ bun run dev:server
   - [Learn modern redux](https://www.youtube.com/watch?v=9zySeP5vH9c&pp=ygUcbWFyayBlcmlrc29uIGphc29uIGxlbmdzdG9yZg%3D%3D)
   - [Redux in 2023](https://www.youtube.com/watch?v=MLbXjCddf3A&pp=ygUcbWFyayBlcmlrc29uIGphc29uIGxlbmdzdG9yZg%3D%3D)
 
-## Todo
-- endpoints
+---
+
+# Todo
+
+## endpoints
   - List All Products: GET
-    - filter
-    - sort
+    - filter - can be handled on frontend?
+    - sort - can be handled on frontend?
   - List Featured products: GET
   - Single Product details: GET, :id
   - List categories: GET
   - List All products in category: GET, :id
   - Checkout: POST
   - List Discounted Products: GET
+
+## UX
+- Bandcamp inspired checkout modal?
