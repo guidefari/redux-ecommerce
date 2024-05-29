@@ -32,6 +32,8 @@ jobs:
       #   run: cd client && bun run ci:quality
       - name: pwd
         run: pwd && ls
+      - name: install
+        run: bun install
       - name: Build
         run: bun run build:client
       - name: Run Tests
