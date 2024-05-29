@@ -30,6 +30,8 @@ jobs:
       - uses: oven-sh/setup-bun@v1
       # - name: Biome
       #   run: cd client && bun run ci:quality
+      - name: pwd
+        run: pwd
       - name: Build
         run: bun run build
       - name: Run Tests
