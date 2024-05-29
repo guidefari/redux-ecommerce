@@ -25,12 +25,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with:
-          path: client
       - uses: oven-sh/setup-bun@v1
       - name: Biome
-        run: bun biome ci .
+        run: cd client && bun biome ci .
       - name: Build
-        run: bun build
+        run: cd client && bun build
       - name: Run Tests
-        run: bun test
+        run: cd client && bun test
