@@ -1,5 +1,6 @@
 import { getIntersectionByField } from "@shared/util";
 import { Hono } from "hono";
+import { cors } from "hono/cors";
 import { categories } from "../src/data/categories";
 import {
 	getDiscountedProducts,
@@ -10,6 +11,7 @@ import {
 } from "../src/data/products";
 
 const api = new Hono();
+api.use("/*", cors());
 
 api.get("/products", (c) => {
 	const { featured, discounted } = c.req.query();
