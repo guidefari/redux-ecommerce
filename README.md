@@ -33,6 +33,7 @@ bun run dev:server
 ---
 
 # Todo
+- ✅fetch data from frontend and put in a basic UI list.
 
 ## endpoints
   - ✅List All Products: GET 
