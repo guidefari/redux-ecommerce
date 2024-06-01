@@ -1,11 +1,21 @@
 import { Section } from "../../components/Section";
-import { useGetCategoriesQuery } from "./categoryApiSlice";
-import Icon from "./components/DynamicIcon";
+import {
+	useGetFeaturedProductsQuery,
+	useLazyGetCategoryQuery,
+} from "../../store/products";
 
-export const Categories = () => {
+export const FeaturedProcuts = () => {
 	const { data, isError, isLoading, isSuccess, error } =
-		useGetCategoriesQuery();
-	console.log("data:", data);
+		useGetFeaturedProductsQuery();
+	const [
+		trigger,
+		{
+			error: singleCategoryError,
+			isError: isSingleCategoryError,
+			data: category,
+		},
+		lastPromiseInfo,
+	] = useLazyGetCategoryQuery();
 
 	if (isError) {
 		console.log({ error });
@@ -26,19 +36,19 @@ export const Categories = () => {
 
 	if (isSuccess) {
 		return (
-			<Section title="Browse By Category">
+			<Section title="Featured Products">
 				<div className="grid grid-cols-2 gap-4 p-4 md:grid-cols-3 lg:grid-cols-5 md:p-6">
-					{data.map((category) => (
-						<div
-							className="flex flex-col items-center justify-center h-32 p-4 transition-transform bg-white rounded-lg shadow-md dark:bg-gray-950 dark:text-gray-50 hover:scale-105"
-							key={category.id}
-						>
-							<Icon
-								className="w-10 h-full text-gray-800 aspect-square"
-								id={category.id}
-							/>
-							<p className="text-xs text-center">{category.name}</p>
-						</div>
+					{data.map((product) => (
+						<h1 key={product.id}>{product.name}</h1>
+						// <button
+						// 	type="button"
+						// 	className="flex flex-col items-center justify-center h-32 p-4 transition-transform rounded-lg shadow-md shadow-violet-950 hover:scale-105"
+						// 	key={category.id}
+						// 	onClick={() => trigger(category.id)}
+						// >
+						// 	<Icon className="w-10 h-full aspect-square" id={category.id} />
+						// 	<p className="text-xs text-center">{category.name}</p>
+						// </button>
 					))}
 				</div>
 			</Section>
