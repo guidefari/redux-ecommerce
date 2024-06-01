@@ -27,10 +27,10 @@ export const Categories = () => {
 		return (
 			<section>
 				<h2 className="my-3 text-4xl">Browse By Category</h2>
-				<div className="flex items-center justify-between space-x-3">
+				<div className="grid grid-cols-2 gap-4 p-4 md:grid-cols-3 lg:grid-cols-5 md:p-6">
 					{data.map((category) => (
 						<div
-							className="flex flex-col items-center w-40 h-32 p-4 border-2 rounded-lg"
+							className="flex flex-col items-center justify-center h-32 p-4 transition-transform bg-white rounded-lg shadow-md dark:bg-gray-950 dark:text-gray-50 hover:scale-105"
 							key={category.id}
 						>
 							<Icon

@@ -2,7 +2,7 @@ import { Categories } from "./features/categories/Categories";
 
 const App = () => {
 	return (
-		<main className="container mx-auto">
+		<main className="container mx-auto overflow-hidden">
 			<Categories />
 		</main>
 	);
