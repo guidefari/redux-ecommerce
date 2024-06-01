@@ -35,6 +35,8 @@ bun run dev:server
 # Todo
 - ✅fetch data from frontend and put in a basic UI list.
 - ✅Might switch to tailwind, haven't used MUI in years💀
+## Current
+- [Async error handling, macro level](https://redux-toolkit.js.org/rtk-query/usage/error-handling#handling-errors-at-a-macro-level)
 
 ## endpoints
   - ✅List All Products: GET 
