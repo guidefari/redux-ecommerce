@@ -1,7 +1,6 @@
 import { useState } from "react";
 
-import { useAppDispatch, useAppSelector } from "../../app/hooks";
-import styles from "./Counter.module.css";
+import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import {
 	decrement,
 	increment,
@@ -22,20 +21,16 @@ export const Counter = () => {
 
 	return (
 		<div>
-			<div className={styles.row}>
+			<div>
 				<button
-					className={styles.button}
 					aria-label="Decrement value"
 					onClick={() => dispatch(decrement())}
 					type="button"
 				>
 					-
 				</button>
-				<span aria-label="Count" className={styles.value}>
-					{count}
-				</span>
+				<span aria-label="Count">{count}</span>
 				<button
-					className={styles.button}
 					aria-label="Increment value"
 					onClick={() => dispatch(increment())}
 					type="button"
@@ -43,9 +38,8 @@ export const Counter = () => {
 					+
 				</button>
 			</div>
-			<div className={styles.row}>
+			<div>
 				<input
-					className={styles.textbox}
 					aria-label="Set increment amount"
 					value={incrementAmount}
 					type="number"
@@ -54,14 +48,12 @@ export const Counter = () => {
 					}}
 				/>
 				<button
-					className={styles.button}
 					onClick={() => dispatch(incrementByAmount(incrementValue))}
 					type="button"
 				>
 					Add Amount
 				</button>
 				<button
-					className={styles.asyncButton}
 					disabled={status !== "idle"}
 					onClick={() => dispatch(incrementAsync(incrementValue))}
 					type="button"
@@ -69,7 +61,6 @@ export const Counter = () => {
 					Add Async
 				</button>
 				<button
-					className={styles.button}
 					onClick={() => {
 						dispatch(incrementIfOdd(incrementValue));
 					}}

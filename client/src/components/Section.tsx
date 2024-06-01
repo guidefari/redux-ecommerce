@@ -8,7 +8,7 @@ type Props = {
 export const Section = ({ title, children }: Props) => {
 	return (
 		<section>
-			<h2 className="my-3 text-4xl">{title}</h2>
+			<h2 className="my-3 text-2xl md:text-4xl">{title}</h2>
 			{children}
 		</section>
 	);
