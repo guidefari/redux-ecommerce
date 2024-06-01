@@ -1,20 +1,23 @@
 {
-    "name": "bun-vite-react-hono-monorepo-starter",
-    "workspaces": [
-      "./server",
-      "./client"
-    ],
-    "scripts": {
-      "dev:client": "cd client && bun run dev",
-      "build:client": "cd client && bun run build",
-      "quality:client": "cd client && bun run quality-check",
-      "test:client": "cd client && bun run test",
-      "dev:server": "cd server && bun run dev"
-    },
-    "devDependencies": {
-      "bun-types": "latest"
-    },
-    "peerDependencies": {
-      "typescript": "^5.0.0"
-    }
+  "name": "bun-vite-react-hono-monorepo-starter",
+  "workspaces": [
+    "./server",
+    "./client"
+  ],
+  "scripts": {
+    "dev:client": "cd client && bun run dev",
+    "build:client": "cd client && bun run build",
+    "quality:client": "cd client && bun run quality-check",
+    "test:client": "cd client && bun run test",
+    "dev:server": "cd server && bun run dev"
+  },
+  "devDependencies": {
+    "bun-types": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "react-icons": "^5.2.1"
   }
+}

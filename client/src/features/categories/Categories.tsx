@@ -1,4 +1,3 @@
-import { Grid, Paper, Typography } from "@mui/material";
 import Icon from "./DynamicIcon";
 import { useGetCategoriesQuery } from "./categoryApiSlice";
 
@@ -26,24 +25,23 @@ export const Categories = () => {
 
 	if (isSuccess) {
 		return (
-			<>
-				<Typography variant="h4" marginY={5} textAlign="left">
-					Browse By Category
-				</Typography>
-				<Grid
-					justifyContent="center"
-					alignContent={"center"}
-					container
-					spacing={3}
-				>
+			<section>
+				<h2 className="my-3 text-4xl">Browse By Category</h2>
+				<div className="flex items-center justify-between space-x-3">
 					{data.map((category) => (
-						<Grid key={category.id} item>
-							<Icon id={category.id} />
-							<Paper>{category.name}</Paper>
-						</Grid>
+						<div
+							className="flex flex-col items-center w-40 h-32 p-4 border-2 rounded-lg"
+							key={category.id}
+						>
+							<Icon
+								className="w-10 h-full text-gray-800 aspect-square"
+								id={category.id}
+							/>
+							<p className="text-xs text-center">{category.name}</p>
+						</div>
 					))}
-				</Grid>
-			</>
+				</div>
+			</section>
 		);
 	}
 

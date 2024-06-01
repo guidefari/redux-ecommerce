@@ -1,11 +1,10 @@
-import { Container } from "@mui/material";
 import { Categories } from "./features/categories/Categories";
 
 const App = () => {
 	return (
-		<Container>
+		<main className="container mx-auto">
 			<Categories />
-		</Container>
+		</main>
 	);
 };
 

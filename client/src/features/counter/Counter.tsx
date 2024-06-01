@@ -1,6 +1,5 @@
 import { useState } from "react";
 
-import { Button } from "@mui/material";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import styles from "./Counter.module.css";
 import {
@@ -24,25 +23,25 @@ export const Counter = () => {
 	return (
 		<div>
 			<div className={styles.row}>
-				<Button
+				<button
 					className={styles.button}
 					aria-label="Decrement value"
 					onClick={() => dispatch(decrement())}
 					type="button"
 				>
 					-
-				</Button>
+				</button>
 				<span aria-label="Count" className={styles.value}>
 					{count}
 				</span>
-				<Button
+				<button
 					className={styles.button}
 					aria-label="Increment value"
 					onClick={() => dispatch(increment())}
 					type="button"
 				>
 					+
-				</Button>
+				</button>
 			</div>
 			<div className={styles.row}>
 				<input
@@ -54,22 +53,22 @@ export const Counter = () => {
 						setIncrementAmount(e.target.value);
 					}}
 				/>
-				<Button
+				<button
 					className={styles.button}
 					onClick={() => dispatch(incrementByAmount(incrementValue))}
 					type="button"
 				>
 					Add Amount
-				</Button>
-				<Button
+				</button>
+				<button
 					className={styles.asyncButton}
 					disabled={status !== "idle"}
 					onClick={() => dispatch(incrementAsync(incrementValue))}
 					type="button"
 				>
 					Add Async
-				</Button>
-				<Button
+				</button>
+				<button
 					className={styles.button}
 					onClick={() => {
 						dispatch(incrementIfOdd(incrementValue));
@@ -77,7 +76,7 @@ export const Counter = () => {
 					type="button"
 				>
 					Add If Odd
-				</Button>
+				</button>
 			</div>
 		</div>
 	);

@@ -34,6 +34,7 @@ bun run dev:server
 
 # Todo
 - ✅fetch data from frontend and put in a basic UI list.
+- ✅Might switch to tailwind, haven't used MUI in years💀
 
 ## endpoints
   - ✅List All Products: GET 

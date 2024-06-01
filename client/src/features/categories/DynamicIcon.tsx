@@ -1,28 +1,25 @@
-import {
-	Computer,
-	Headphones,
-	Phone,
-	SportsEsports,
-	Watch,
-} from "@mui/icons-material";
 import type React from "react";
+import { HiMiniComputerDesktop } from "react-icons/hi2";
+import { IoPhonePortrait, IoWatch } from "react-icons/io5";
+import { PiGameControllerFill, PiHeadphonesFill } from "react-icons/pi";
 
 interface Props {
 	id: string;
+	className: string;
 }
 
-const Icon: React.FC<Props> = ({ id }) => {
+const Icon: React.FC<Props> = ({ id, className }) => {
 	switch (true) {
 		case id.includes("watch"):
-			return <Watch />;
-		case id.includes("phone"):
-			return <Phone />;
+			return <IoWatch className={className} />;
 		case id.includes("headphone"):
-			return <Headphones />;
+			return <PiHeadphonesFill className={className} />;
+		case id.includes("phone"):
+			return <IoPhonePortrait className={className} />;
 		case id.includes("gaming"):
-			return <SportsEsports />;
+			return <PiGameControllerFill className={className} />;
 		default:
-			return <Computer />;
+			return <HiMiniComputerDesktop className={className} />;
 	}
 };
 
