@@ -1,5 +1,6 @@
-import Icon from "./DynamicIcon";
+import { Section } from "../../components/Section";
 import { useGetCategoriesQuery } from "./categoryApiSlice";
+import Icon from "./components/DynamicIcon";
 
 export const Categories = () => {
 	const { data, isError, isLoading, isSuccess, error } =
@@ -25,8 +26,7 @@ export const Categories = () => {
 
 	if (isSuccess) {
 		return (
-			<section>
-				<h2 className="my-3 text-4xl">Browse By Category</h2>
+			<Section title="Browse By Category">
 				<div className="grid grid-cols-2 gap-4 p-4 md:grid-cols-3 lg:grid-cols-5 md:p-6">
 					{data.map((category) => (
 						<div
@@ -41,7 +41,7 @@ export const Categories = () => {
 						</div>
 					))}
 				</div>
-			</section>
+			</Section>
 		);
 	}
 
