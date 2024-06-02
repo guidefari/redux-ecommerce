@@ -1,7 +1,7 @@
+import type { ProductFilter } from "@shared/types";
 import { getIntersectionByField } from "@shared/util";
 import { Hono } from "hono";
 import { handle } from "hono/aws-lambda";
-import { cors } from "hono/cors";
 import { logger } from "hono/logger";
 import { categories } from "../src/data/categories";
 import {
@@ -13,13 +13,6 @@ import {
 } from "../src/data/products";
 
 const api = new Hono();
-// api.use(
-// 	"/*",
-// 	cors({
-// 		origin: ["https://d27ipf1vpwmgeh.cloudfront.net"],
-// 		allowMethods: ["GET", "POST"],
-// 	}),
-// );
 api.use(logger());
 
 api.get("/products", (c) => {
@@ -46,6 +39,16 @@ api.get("/products", (c) => {
 	}
 
 	return c.json(products);
+});
+
+api.post("/products", async (c) => {
+	const body = await c.req.json<ProductFilter>();
+
+	if (!body?.ids) {
+		return c.json({ message: "Missing product IDs" }, 400);
+	}
+
+	return c.json(getManyProducts(body?.ids));
 });
 api.get("/products/featured", (c) => c.json(getFeaturedProducts()));
 api.get("/product/:id", (c) => {
