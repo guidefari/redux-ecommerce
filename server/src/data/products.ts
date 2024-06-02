@@ -3,21 +3,24 @@ import type { Product } from "@shared/types";
 export const products: Product[] = [
 	{
 		id: "1",
-		name: "Product 1",
-		description: "Description of Product 1",
-		price: 10,
-		images: ["image1.jpg"],
-		relatedProducts: ["1"],
+		name: "iPhone Something",
+		description: "Very nice. design is very human",
+		price: 229.49,
+		images: [
+			"https://images.unsplash.com/photo-1611791484670-ce19b801d192?q=80&w=3457&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+			"https://images.unsplash.com/photo-1523206489230-c012c64b2b48?q=80&w=3774&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+		],
+		relatedProducts: ["2"],
 		discount: 0,
 		featured: true,
 	},
 	{
 		id: "2",
-		name: "Product 2",
+		name: "iPod",
 		description: "Description of Product 2",
 		price: 20,
 		images: ["image2.jpg"],
-		relatedProducts: ["2"],
+		relatedProducts: ["1"],
 		discount: 8,
 	},
 	{

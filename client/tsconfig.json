@@ -16,7 +16,8 @@
 		"jsx": "react-jsx",
 		"types": ["vitest/globals"],
 		"paths": {
-			"@shared/*": ["../shared/*"]
+			"@shared/*": ["../shared/*"],
+			"@/*": ["./src/*"]
 		}
 	},
 	"references": [{ "path": "./tsconfig.node.json" }]

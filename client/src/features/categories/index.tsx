@@ -42,7 +42,7 @@ export const Categories = () => {
 					{data.map((category) => (
 						<button
 							type="button"
-							className="flex flex-col items-center justify-center h-32 p-4 transition-transform rounded-lg shadow-md shadow-violet-950 hover:scale-105"
+							className="flex flex-col items-center justify-center h-32 p-4 transition-transform rounded-lg shadow-md hover:scale-105"
 							key={category.id}
 							onClick={() => trigger(category.id)}
 						>
