@@ -1,9 +1,13 @@
 import { Button } from "@/components/ui/button";
+import { addToCart } from "@/store/cart";
+import { useAppDispatch } from "@/store/hooks";
 import type { Product } from "@shared/types";
 
-type Props = Pick<Product, "name" | "price"> & { img: string };
+type Props = Pick<Product, "name" | "price" | "id"> & { img: string };
 
-export function ProductCard({ img, name, price }: Props) {
+export function ProductCard({ img, name, price, id }: Props) {
+	const dispatch = useAppDispatch();
+
 	return (
 		<div className="bg-white rounded-lg shadow-lg overflow-hidden w-full max-w-[300px] transition-all  hover:shadow-xl">
 			{/* <a className="block" href="#"> */}
@@ -27,7 +31,11 @@ export function ProductCard({ img, name, price }: Props) {
 				{/* </a> */}
 				<div className="flex items-center justify-between">
 					<span className="text-xl font-bold text-gray-900">${price}</span>
-					<Button variant="outline" size="sm">
+					<Button
+						onClick={() => dispatch(addToCart({ id, quantity: 1 }))}
+						variant="outline"
+						size="sm"
+					>
 						Add to Cart
 					</Button>
 				</div>

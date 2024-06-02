@@ -38,13 +38,14 @@ export const FeaturedProcuts = () => {
 	if (isSuccess) {
 		return (
 			<Section title="Featured Products">
-				<div className="grid grid-cols-2 gap-4 p-4 md:grid-cols-3 lg:grid-cols-5 md:p-6">
+				<div className="grid grid-cols-2 gap-4 p-4 md:grid-cols-3 lg:grid-cols-4 md:p-6">
 					{data.map((product) => (
 						<ProductCard
 							img={product.images[0]}
 							name={product.name}
 							price={product.price}
 							key={product.id}
+							id={product.id}
 						/>
 					))}
 				</div>

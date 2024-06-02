@@ -16,6 +16,10 @@ export type ProductResponse = {
 	limit: number;
 };
 
+export type ProductFilter = {
+	ids?: string[];
+};
+
 export type CheckoutPayload = {
 	products: Array<{
 		id: string;
