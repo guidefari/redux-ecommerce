@@ -3,7 +3,7 @@ import type { Product } from "@shared/types";
 export const products: Product[] = [
 	{
 		id: "1",
-		name: "iPhone Something",
+		name: "iPhone",
 		description: "Very nice. design is very human",
 		price: 229.49,
 		images: [
@@ -34,10 +34,13 @@ export const products: Product[] = [
 	},
 	{
 		id: "4",
-		name: "Product 4",
-		description: "Description of Product 4",
-		price: 40,
-		images: ["image4.jpg"],
+		name: "Sony XM4",
+		description: "Great value for money",
+		price: 229.99,
+		images: [
+			"https://images.unsplash.com/photo-1618366712010-f4ae9c647dcb?q=80&w=3088&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+			"https://images.unsplash.com/photo-1618366712069-cf25c7b669f3?q=80&w=3088&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+		],
 		relatedProducts: ["4"],
 		discount: 15,
 		featured: true,
@@ -89,10 +92,13 @@ export const products: Product[] = [
 	},
 	{
 		id: "10",
-		name: "Product 10",
-		description: "Description of Product 10",
-		price: 100,
-		images: ["image10.jpg"],
+		name: "iPod Classic",
+		description: "An absolute classic",
+		price: 390,
+		images: [
+			"https://images.unsplash.com/photo-1536656930057-9252abf296a5?q=80&w=2664&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+			"https://images.unsplash.com/photo-1548122038-f8ba35ae8420?q=80&w=2688&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+		],
 		relatedProducts: ["0"],
 		discount: 0,
 		featured: true,
@@ -171,10 +177,13 @@ export const products: Product[] = [
 	},
 	{
 		id: "19",
-		name: "Product 19",
-		description: "Description of Product 19",
+		name: "Bluetooth speaker",
+		description: "Very nice bass",
 		price: 190,
-		images: ["image19.jpg"],
+		images: [
+			"https://images.unsplash.com/photo-1589833870588-8a0902bcf55b?q=80&w=2178&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+			"https://images.unsplash.com/photo-1546518449-3826f84350e9?q=80&w=3087&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+		],
 		relatedProducts: ["9"],
 		discount: 20,
 		featured: true,

@@ -5,19 +5,24 @@
     "./client"
   ],
   "scripts": {
-    "dev:client": "cd client && bun run dev",
     "build:client": "cd client && bun run build",
+    "dev:client": "cd client && bun run dev",
+    "dev:server": "cd server && bun run dev",
     "quality:client": "cd client && bun run quality-check",
     "test:client": "cd client && bun run test",
-    "dev:server": "cd server && bun run dev"
+    "dev:sst": "sst dev",
+    "dev:sst-fe": "cd client && sst dev vite dev",
+    "deploy": "sst deploy"
   },
   "devDependencies": {
+    "@types/aws-lambda": "8.10.138",
     "bun-types": "latest"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
   },
   "dependencies": {
-    "react-icons": "^5.2.1"
+    "react-icons": "^5.2.1",
+    "sst": "ion"
   }
 }

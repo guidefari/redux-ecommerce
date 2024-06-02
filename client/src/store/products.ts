@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import type { Category, Product, ProductResponse } from "@shared/types";
 
 export const productsApiSlice = createApi({
-	baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:1212/" }),
+	baseQuery: fetchBaseQuery({ baseUrl: import.meta.env.VITE_API_BASE_URL }),
 	reducerPath: "productsApi",
 	// Tag types are used for caching and invalidation.
 	tagTypes: ["Products", "Categories", "SingleCategory"],

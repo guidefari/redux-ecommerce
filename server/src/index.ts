@@ -1,5 +1,6 @@
 import { getIntersectionByField } from "@shared/util";
 import { Hono } from "hono";
+import { handle } from "hono/aws-lambda";
 import { cors } from "hono/cors";
 import { logger } from "hono/logger";
 import { categories } from "../src/data/categories";
@@ -12,7 +13,13 @@ import {
 } from "../src/data/products";
 
 const api = new Hono();
-api.use("/*", cors());
+// api.use(
+// 	"/*",
+// 	cors({
+// 		origin: ["https://d27ipf1vpwmgeh.cloudfront.net"],
+// 		allowMethods: ["GET", "POST"],
+// 	}),
+// );
 api.use(logger());
 
 api.get("/products", (c) => {
@@ -65,3 +72,5 @@ export default {
 	port: 1212,
 	fetch: api.fetch,
 };
+
+export const handler = handle(api);
