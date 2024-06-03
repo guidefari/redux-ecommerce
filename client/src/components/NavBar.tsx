@@ -1,30 +1,15 @@
-import { Badge } from "@/components/ui/badge";
-import { selectCartQuantity } from "@/store/cart";
-import { useAppSelector } from "@/store/hooks";
 import type { SVGProps } from "react";
 import { CartModal } from "./CartModal";
 
 export function NavBar() {
-	const cartCount = useAppSelector(selectCartQuantity);
-
 	return (
 		<header className="flex items-center justify-between h-16 px-4 border-b md:px-6">
 			<button type="button" className="flex items-center gap-2">
 				<MountainIcon className="w-6 h-6" />
 				<span className="text-lg font-semibold">Goosebumps</span>
 			</button>
-			<button
-				type="button"
-				className="relative inline-flex items-center gap-2 px-3 py-2 text-sm font-medium transition-colors rounded-md hover:bg-gray-100 dark:hover:bg-gray-800"
-			>
-				<CartModal />
-				<span className="sr-only">Cart</span>
-				{cartCount && cartCount > 0 && (
-					<Badge className="absolute -top-2 -right-2 text-theme-dark bg-theme-highlight-secondary  px-2 py-0.5 text-xs rounded-full">
-						{cartCount}
-					</Badge>
-				)}
-			</button>
+
+			<CartModal />
 		</header>
 	);
 }

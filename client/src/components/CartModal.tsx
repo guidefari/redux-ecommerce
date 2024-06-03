@@ -8,13 +8,29 @@ import {
 	DialogTrigger,
 } from "@/components/ui/dialog";
 import { Separator } from "@/components/ui/separator";
+import { selectCartQuantity } from "@/store/cart";
+import { useAppSelector } from "@/store/hooks";
 import type { SVGProps } from "react";
+import { Badge } from "./ui/badge";
 
 export function CartModal() {
+	const cartCount = useAppSelector(selectCartQuantity);
+
 	return (
 		<Dialog>
 			<DialogTrigger asChild>
-				<ShoppingCartIcon className="w-5 h-5" />
+				<button
+					type="button"
+					className="relative inline-flex items-center gap-2 px-3 py-2 text-sm font-medium transition-colors rounded-md hover:bg-gray-100 dark:hover:bg-gray-800"
+				>
+					<ShoppingCartIcon className="w-5 h-5" />
+					<span className="sr-only">Cart</span>
+					{cartCount && cartCount > 0 && (
+						<Badge className="absolute -top-2 -right-2 text-theme-dark bg-theme-highlight-secondary  px-2 py-0.5 text-xs rounded-full">
+							{cartCount}
+						</Badge>
+					)}
+				</button>
 			</DialogTrigger>
 			<DialogContent className="sm:max-w-[600px]">
 				<DialogHeader>
