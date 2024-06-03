@@ -2,10 +2,6 @@
   @tailwind components;
   @tailwind utilities;
 
-  html {
-    @apply bg-white dark:bg-gray-950 dark:text-gray-50;
-  }
-  
   @layer base {
     :root {
       --background: 0 0% 100%;
@@ -37,6 +33,12 @@
       --ring: 224 71.4% 4.1%;
 
       --radius: 0.5rem;
+
+      /* theme */
+      --theme-dark: #28464B;
+      --theme-light: #A7C4C2;
+      --theme-highlight-main: #632B30;
+      --theme-highlight-secondary: #B592A0;
     }
 
     .dark {
@@ -75,6 +77,6 @@
       @apply border-border;
     }
     body {
-      @apply bg-background text-foreground;
+      @apply bg-theme-dark text-theme-light;
     }
   }
