@@ -22,6 +22,14 @@ export const productsApiSlice = createApi({
 		getFeaturedProducts: build.query<Product[], void>({
 			query: () => "products?featured=true",
 		}),
+		getManyProducts: build.query<Product[], string[]>({
+			query: (ids) => ({
+				url: "products",
+				body: {
+					ids,
+				},
+			}),
+		}),
 	}),
 });
 
@@ -31,4 +39,6 @@ export const {
 	useLazyGetCategoryQuery,
 	useGetProductsQuery,
 	useGetFeaturedProductsQuery,
+	useGetManyProductsQuery,
+	useLazyGetManyProductsQuery,
 } = productsApiSlice;
