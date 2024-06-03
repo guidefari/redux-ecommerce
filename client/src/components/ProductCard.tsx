@@ -9,7 +9,7 @@ export function ProductCard({ img, name, price, id }: Props) {
 	const dispatch = useAppDispatch();
 
 	return (
-		<div className="bg-white rounded-lg shadow-lg overflow-hidden w-full max-w-[300px] transition-all  hover:shadow-xl">
+		<div className=" rounded-lg shadow-lg overflow-hidden w-full max-w-[300px] transition-all  hover:shadow-xl">
 			{/* <a className="block" href="#"> */}
 			<img
 				alt={img}
@@ -25,16 +25,17 @@ export function ProductCard({ img, name, price, id }: Props) {
 			{/* </a> */}
 			<div className="p-4 space-y-2">
 				{/* <a className="block" href="#"> */}
-				<h3 className="text-lg font-semibold text-gray-900 hover:cursor-pointer hover:underline">
+				<h3 className="text-lg font-semibold w-fit hover:cursor-pointer hover:underline">
 					{name}
 				</h3>
 				{/* </a> */}
 				<div className="flex items-center justify-between">
-					<span className="text-xl font-bold text-gray-900">${price}</span>
+					<span className="text-xl font-bold ">${price}</span>
 					<Button
 						onClick={() => dispatch(addToCart({ id, quantity: 1 }))}
 						variant="outline"
 						size="sm"
+						className="text-theme-dark"
 					>
 						Add to Cart
 					</Button>

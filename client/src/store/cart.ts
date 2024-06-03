@@ -33,7 +33,6 @@ export const cartSlice = createAppSlice({
 		// 	state.value -= 1;
 		// }),
 		addToCart: create.reducer((state, action: PayloadAction<Product>) => {
-			console.log("state:", state);
 			if (!state.products) {
 				state.products = [action.payload];
 				return;
@@ -43,6 +42,7 @@ export const cartSlice = createAppSlice({
 				(product) => product.id === action.payload.id,
 			);
 			if (index === -1) {
+				state.products.push(action.payload);
 				return;
 			}
 
@@ -73,10 +73,13 @@ export const cartSlice = createAppSlice({
 	selectors: {
 		selectProducts: (counter) => counter.products,
 		selectCartId: (counter) => counter.id,
+		selectCartQuantity: (cart) =>
+			cart.products?.reduce((a, b) => a + b.quantity, 0),
 	},
 });
 
 // Action creators are generated for each case reducer function.
 export const { addToCart } = cartSlice.actions;
 
-export const { selectCartId, selectProducts } = cartSlice.selectors;
+export const { selectCartId, selectProducts, selectCartQuantity } =
+	cartSlice.selectors;
