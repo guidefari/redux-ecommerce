@@ -7,7 +7,7 @@ const App = () => {
 	return (
 		<>
 			<NavBar />
-			<main className="container min-h-screen mx-auto overflow-hidden overflow-y-auto font-inter ">
+			<main className="min-h-screen mx-auto overflow-hidden overflow-y-auto sm:container font-inter ">
 				<Categories />
 				<FeaturedProcuts />
 			</main>

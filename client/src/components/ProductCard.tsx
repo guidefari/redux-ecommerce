@@ -25,12 +25,12 @@ export function ProductCard({ img, name, price, id }: Props) {
 			{/* </a> */}
 			<div className="p-4 space-y-2">
 				{/* <a className="block" href="#"> */}
-				<h3 className="text-lg font-semibold w-fit hover:cursor-pointer hover:underline">
+				<h3 className="text-base font-semibold line-clamp-1 sm:text-lg w-fit hover:cursor-pointer hover:underline">
 					{name}
 				</h3>
 				{/* </a> */}
-				<div className="flex items-center justify-between">
-					<span className="text-xl font-bold ">${price}</span>
+				<div className="flex flex-col space-y-2 sm:space-y-0 sm:justify-between sm:items-center sm:flex-row">
+					<span className="font-bold ">${price}</span>
 					<Button
 						onClick={() => dispatch(addToCart({ id, quantity: 1, name }))}
 						variant="outline"
