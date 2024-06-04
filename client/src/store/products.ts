@@ -5,7 +5,7 @@ export const productsApiSlice = createApi({
 	baseQuery: fetchBaseQuery({ baseUrl: import.meta.env.VITE_API_BASE_URL }),
 	reducerPath: "productsApi",
 	// Tag types are used for caching and invalidation.
-	tagTypes: ["Products", "Categories", "SingleCategory"],
+	tagTypes: ["Products", "Categories", "SingleCategory", "SingleProduct"],
 	endpoints: (build) => ({
 		getCategories: build.query<Category[], void>({
 			query: () => "categories",
@@ -14,6 +14,12 @@ export const productsApiSlice = createApi({
 			query: (id) => ({ url: `category/${id}` }),
 			providesTags: (result) => [
 				{ type: "SingleCategory", id: String(result?.id) },
+			],
+		}),
+		getProduct: build.query<Product, Product["id"]>({
+			query: (id) => ({ url: `product/${id}` }),
+			providesTags: (result) => [
+				{ type: "SingleProduct", id: String(result?.id) },
 			],
 		}),
 		getProducts: build.query<Product[], void>({
@@ -41,4 +47,6 @@ export const {
 	useGetFeaturedProductsQuery,
 	useGetManyProductsQuery,
 	useLazyGetManyProductsQuery,
+	useLazyGetProductQuery,
+	useGetProductQuery,
 } = productsApiSlice;
