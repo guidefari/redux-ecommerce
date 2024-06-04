@@ -8,7 +8,7 @@
     "build:client": "cd client && bun run build",
     "dev:client": "cd client && bun run dev",
     "dev:server": "cd server && bun run dev",
-    "biome:check": "cd client && bun run quality-check",
+    "biome:ci": "cd client && bun run quality-check",
     "biome:fix": "cd client && bun run biome check . --apply --no-errors-on-unmatched",
     "test:client": "cd client && bun run test",
     "dev:sst": "sst dev",
