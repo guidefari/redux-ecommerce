@@ -18,6 +18,19 @@ To run server:
 bun run dev:server
 ```
 
+## Git pre-commit hook
+
+I set up a simple pre-commit hook on my laptop.
+Bash script located at: `./git/hooks/pre-commit`:
+
+```sh
+#!/bin/sh
+
+set -eu
+
+npx @biomejs/biome check --staged --files-ignore-unknown=true --no-errors-on-unmatched
+```
+
 
 ## Architectural choices
 - Switching to monorepo for quicker iteration between FE & BE.
