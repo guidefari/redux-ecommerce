@@ -1,4 +1,5 @@
 import { NavBar } from "./components/NavBar";
+import { Toaster } from "./components/ui/toaster";
 import { Categories } from "./features/categories";
 import { FeaturedProcuts } from "./features/featuredProducts";
 
@@ -10,6 +11,7 @@ const App = () => {
 				<Categories />
 				<FeaturedProcuts />
 			</main>
+			<Toaster />
 		</>
 	);
 };

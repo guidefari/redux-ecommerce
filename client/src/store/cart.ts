@@ -1,3 +1,4 @@
+import { toast } from "@/components/ui/use-toast";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import { createAppSlice } from "./createAppSlice";
 import type { AppThunk } from "./store";
@@ -5,6 +6,7 @@ import type { AppThunk } from "./store";
 type Product = {
 	id: string;
 	quantity: number;
+	name: string;
 };
 
 export interface CartSlice {
@@ -33,8 +35,16 @@ export const cartSlice = createAppSlice({
 		// 	state.value -= 1;
 		// }),
 		addToCart: create.reducer((state, action: PayloadAction<Product>) => {
+			const showToast = () =>
+				toast({
+					title: `✅ ${action.payload.name} added to cart`,
+					duration: 1300,
+					// description: "Friday, February 10, 2023 at 5:57 PM",
+				});
+
 			if (!state.products) {
 				state.products = [action.payload];
+				showToast();
 				return;
 			}
 
@@ -43,10 +53,13 @@ export const cartSlice = createAppSlice({
 			);
 			if (index === -1) {
 				state.products.push(action.payload);
+				showToast();
 				return;
 			}
 
 			state.products[index].quantity += action.payload.quantity;
+			showToast();
+			return;
 		}),
 		// incrementAsync: create.asyncThunk(
 		// 	async (amount: number) => {

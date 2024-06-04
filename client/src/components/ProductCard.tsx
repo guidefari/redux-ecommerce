@@ -32,7 +32,7 @@ export function ProductCard({ img, name, price, id }: Props) {
 				<div className="flex items-center justify-between">
 					<span className="text-xl font-bold ">${price}</span>
 					<Button
-						onClick={() => dispatch(addToCart({ id, quantity: 1 }))}
+						onClick={() => dispatch(addToCart({ id, quantity: 1, name }))}
 						variant="outline"
 						size="sm"
 						className="text-theme-dark"
