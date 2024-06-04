@@ -50,6 +50,8 @@ npx @biomejs/biome check --staged --files-ignore-unknown=true --no-errors-on-unm
 - ✅Might switch to tailwind, haven't used MUI in years💀
 ## Current
 - [Async error handling, macro level](https://redux-toolkit.js.org/rtk-query/usage/error-handling#handling-errors-at-a-macro-level)
+- [ ] cart should probably be in local storage. pass in the entire object as action, plus quantity
+- [ ] likely a good time for some unit tests. add to cart, remove from cart
 
 ## endpoints
   - ✅List All Products: GET 
