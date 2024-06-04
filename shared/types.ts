@@ -4,8 +4,8 @@ export type Product = {
 	description: string;
 	price: number;
 	images: Array<string>;
-	relatedProducts: Array<string>;
-	discount: number;
+	relatedProducts?: Array<string>;
+	discount?: number;
 	featured?: boolean;
 };
 

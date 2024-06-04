@@ -8,13 +8,22 @@ import {
 	DialogTrigger,
 } from "@/components/ui/dialog";
 import { Separator } from "@/components/ui/separator";
-import { selectCartQuantity } from "@/store/cart";
-import { useAppSelector } from "@/store/hooks";
+import {
+	decrementFromCart,
+	increment,
+	selectCartQuantity,
+	selectCartTotal,
+	selectProducts,
+} from "@/store/cart";
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import type { SVGProps } from "react";
 import { Badge } from "./ui/badge";
 
 export function CartModal() {
 	const cartCount = useAppSelector(selectCartQuantity);
+	const cartProcducts = useAppSelector(selectProducts);
+	const cartTotal = useAppSelector(selectCartTotal);
+	const dispatch = useAppDispatch();
 
 	return (
 		<Dialog>
@@ -25,90 +34,80 @@ export function CartModal() {
 				>
 					<ShoppingCartIcon className="w-5 h-5" />
 					<span className="sr-only">Cart</span>
-					{cartCount && cartCount > 0 && (
+					{cartCount > 0 && (
 						<Badge className="absolute -top-2 -right-2 text-theme-dark bg-theme-highlight-secondary  px-2 py-0.5 text-xs rounded-full">
 							{cartCount}
 						</Badge>
 					)}
 				</button>
 			</DialogTrigger>
-			<DialogContent className="sm:max-w-[600px]">
+			<DialogContent className="sm:max-w-[600px] bg-theme-dark">
 				<DialogHeader>
 					<DialogTitle>Cart</DialogTitle>
 				</DialogHeader>
 				<div className="grid gap-4 py-4">
 					<div className="grid gap-4">
-						<div className="grid grid-cols-[80px_1fr_80px] items-center gap-4">
-							<img
-								alt="Product"
-								className="object-cover rounded-md"
-								height={80}
-								src="/placeholder.svg"
-								style={{
-									aspectRatio: "80/80",
-									objectFit: "cover",
-								}}
-								width={80}
-							/>
-							<div className="grid gap-1">
-								<h3 className="font-medium">Acme Circles T-Shirt</h3>
-								<p className="text-sm text-gray-500 dark:text-gray-400">
-									60% combed ringspun cotton/40% polyester jersey tee.
-								</p>
+						{cartProcducts?.map((product) => (
+							<div
+								key={product.id}
+								className="grid grid-cols-[80px_1fr_80px] items-center gap-4"
+							>
+								<img
+									alt="Product"
+									className="object-cover rounded-md"
+									height={80}
+									src={product.image}
+									style={{
+										aspectRatio: "80/80",
+										objectFit: "cover",
+									}}
+									width={80}
+								/>
+								<div className="grid gap-1">
+									<h3 className="font-medium">{product.name}</h3>
+									<p className="text-sm ">{product.description || ""}</p>
+								</div>
+								<div className="flex items-center gap-2">
+									<Button
+										size="icon"
+										variant="ghost"
+										onClick={() =>
+											dispatch(decrementFromCart({ id: product.id }))
+										}
+									>
+										<MinusIcon className="w-4 h-4" />
+										<span className="sr-only">Decrease quantity</span>
+									</Button>
+									<span>{product.quantity}</span>
+									<Button
+										size="icon"
+										variant="ghost"
+										onClick={() => dispatch(increment({ id: product.id }))}
+									>
+										<PlusIcon className="w-4 h-4" />
+										<span className="sr-only">Increase quantity</span>
+									</Button>
+								</div>
 							</div>
-							<div className="flex items-center gap-2">
-								<Button size="icon" variant="ghost">
-									<MinusIcon className="w-4 h-4" />
-									<span className="sr-only">Decrease quantity</span>
-								</Button>
-								<span>1</span>
-								<Button size="icon" variant="ghost">
-									<PlusIcon className="w-4 h-4" />
-									<span className="sr-only">Increase quantity</span>
-								</Button>
+						))}
+					</div>
+					{cartTotal > 0 && (
+						<div>
+							<Separator />
+							<div className="grid items-center grid-cols-2">
+								<p className="text-lg font-medium">Total</p>
+								<p className="text-lg font-medium text-right">
+									$ {cartTotal.toFixed(2)}
+								</p>
 							</div>
 						</div>
-						{/* <div className="grid grid-cols-[80px_1fr_80px] items-center gap-4">
-							<img
-								alt="Product Image"
-								className="object-cover rounded-md"
-								height={80}
-								src="/placeholder.svg"
-								style={{
-									aspectRatio: "80/80",
-									objectFit: "cover",
-								}}
-								width={80}
-							/>
-							<div className="grid gap-1">
-								<h3 className="font-medium">Sunset Beach Shorts</h3>
-								<p className="text-sm text-gray-500 dark:text-gray-400">
-									Quick-Dry Swim Shorts
-								</p>
-							</div>
-							<div className="flex items-center gap-2">
-								<Button size="icon" variant="ghost">
-									<MinusIcon className="w-4 h-4" />
-									<span className="sr-only">Decrease quantity</span>
-								</Button>
-								<span>2</span>
-								<Button size="icon" variant="ghost">
-									<PlusIcon className="w-4 h-4" />
-									<span className="sr-only">Increase quantity</span>
-								</Button>
-							</div>
-						</div> */}
-					</div>
-					<Separator />
-					<div className="grid items-center grid-cols-2">
-						<p className="text-lg font-medium">Total</p>
-						<p className="text-lg font-medium text-right">$198.98</p>
-					</div>
+					)}
 				</div>
 				<DialogFooter className="flex gap-2">
-					<Button variant="outline">Proceed to Checkout</Button>
 					<div>
-						<Button>Close</Button>
+						<Button className="hover:text-theme-highlight-secondary">
+							Checkout
+						</Button>
 					</div>
 				</DialogFooter>
 			</DialogContent>
