@@ -16,6 +16,7 @@ import { Badge } from "../ui/badge";
 import { Address } from "./Address";
 import { Cart } from "./Cart";
 import { DialogTitleCopy, useStateValue } from "./Context";
+import { PaymentDetails } from "./PaymentDetails";
 
 export const Dialog = () => {
 	const cartCount = useAppSelector(selectCartQuantity);
@@ -47,6 +48,7 @@ export const Dialog = () => {
 				</DialogHeader>
 				{state === "cart" && <Cart />}
 				{state === "address" && <Address />}
+				{state === "payment" && <PaymentDetails />}
 			</DialogContent>
 		</BaseDialog>
 	);

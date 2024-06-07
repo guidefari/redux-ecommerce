@@ -8,7 +8,12 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from "@/components/ui/select";
+import {
+	readFromLocalStorage,
+	writeToLocalStorage,
+} from "@/services/clientStorage";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { DialogFooter } from "../ui/dialog";
@@ -33,10 +38,14 @@ const formSchema = z.object({
 
 export function Address() {
 	const thisPatch = useDispatch();
+	const WIP: z.infer<typeof formSchema> = readFromLocalStorage({
+		tableName: "addresses",
+		id: "wip",
+	});
 
 	const form = useForm<z.infer<typeof formSchema>>({
 		resolver: zodResolver(formSchema),
-		defaultValues: {
+		defaultValues: WIP ?? {
 			city: "",
 			state: "",
 			streetAddress: "",
@@ -49,7 +58,32 @@ export function Address() {
 		// Do something with the form values.
 		// ✅ This will be type-safe and validated.
 		console.log(values);
+		thisPatch({ type: "SET_STATE", payload: "payment" });
 	}
+
+	// this should be on dialog close too
+	// context may come in handy
+	function onBack() {
+		// writeToLocalStorage({
+		// 	tableName: "addresses",
+		// 	id: "wip",
+		// 	data: form.getValues(),
+		// });
+
+		thisPatch({ type: "SET_STATE", payload: "cart" });
+	}
+
+	// biome-ignore lint/correctness/useExhaustiveDependencies: <shhhh. this isn't a problem>
+	useEffect(() => {
+		return () => {
+			console.log("cleanup");
+			writeToLocalStorage({
+				tableName: "addresses",
+				id: "wip",
+				data: form.getValues(),
+			});
+		};
+	}, []);
 
 	return (
 		<Form {...form}>
@@ -151,16 +185,15 @@ export function Address() {
 						)}
 					/>
 				</div>
-
 				<DialogFooter>
 					<div className="flex justify-end gap-2">
 						<Button
-							onClick={() => thisPatch({ type: "SET_STATE", payload: "cart" })}
+							onClick={onBack}
 							className="hover:text-theme-highlight-secondary"
 						>
 							Back
 						</Button>
-						<Button type="submit">Submit</Button>
+						<Button type="submit">Continue</Button>
 					</div>
 				</DialogFooter>
 			</form>
