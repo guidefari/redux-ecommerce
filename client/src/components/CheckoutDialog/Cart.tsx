@@ -17,6 +17,17 @@ export function Cart() {
 	const dispatch = useAppDispatch();
 	const thisPatch = useDispatch();
 
+	if (cartTotal === 0) {
+		return (
+			<div className="flex flex-col items-center justify-center ">
+				<h3 className="text-lg font-semibold">
+					No Products in your cart, yet...
+				</h3>
+				<p>Buy something!</p>
+			</div>
+		);
+	}
+
 	return (
 		<div>
 			<div className="grid gap-4 py-4">
@@ -77,7 +88,7 @@ export function Cart() {
 					</div>
 				)}
 			</div>
-			<DialogFooter className="flex gap-2">
+			<DialogFooter>
 				<div className="flex justify-end">
 					<Button
 						onClick={() => thisPatch({ type: "SET_STATE", payload: "address" })}
