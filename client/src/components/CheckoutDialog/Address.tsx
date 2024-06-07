@@ -8,17 +8,15 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from "@/components/ui/select";
+import { DialogFooter } from "../ui/dialog";
+import { useDispatch } from "./Context";
 
 export function Address() {
+	const thisPatch = useDispatch();
+
 	return (
 		<div>
 			<div>
-				<Button>Enter Address</Button>
-			</div>
-			<div className="sm:max-w-md">
-				<div>
-					<div>Enter Your Address</div>
-				</div>
 				<div className="space-y-4">
 					<div className="grid gap-2">
 						<Label htmlFor="address">Street Address</Label>
@@ -67,11 +65,21 @@ export function Address() {
 						</div>
 					</div>
 				</div>
-				<div>
-					<Button className="ml-auto" type="submit">
-						Save Address
-					</Button>
-				</div>
+				<DialogFooter className="">
+					<div className="flex justify-end my-2 space-x-3">
+						<Button
+							variant="ghost"
+							className=""
+							type="button"
+							onClick={() => thisPatch({ type: "SET_STATE", payload: "cart" })}
+						>
+							Back
+						</Button>
+						<Button className="" type="button">
+							Save Address
+						</Button>
+					</div>
+				</DialogFooter>
 			</div>
 		</div>
 	);

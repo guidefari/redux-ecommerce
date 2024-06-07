@@ -78,7 +78,7 @@ export function Cart() {
 				)}
 			</div>
 			<DialogFooter className="flex gap-2">
-				<div>
+				<div className="flex justify-end">
 					<Button
 						onClick={() => thisPatch({ type: "SET_STATE", payload: "address" })}
 						className="hover:text-theme-highlight-secondary"
