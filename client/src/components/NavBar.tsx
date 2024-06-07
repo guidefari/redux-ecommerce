@@ -1,5 +1,5 @@
 import type { SVGProps } from "react";
-import { CartModal } from "./CartModal";
+import { CartModal } from "./CheckoutDialog";
 
 export function NavBar() {
 	return (
