@@ -35,8 +35,10 @@ export const Dialog = () => {
 				</button>
 			</DialogTrigger>
 			<DialogContent className="sm:max-w-[600px] bg-theme-dark">
-				<DialogHeader>
-					<DialogTitle>{DialogTitleCopy[state]}</DialogTitle>
+				<DialogHeader className="mb-5">
+					<DialogTitle className="text-3xl">
+						{DialogTitleCopy[state]}
+					</DialogTitle>
 				</DialogHeader>
 				{state === "cart" && <Cart />}
 				{state === "address" && <Address />}

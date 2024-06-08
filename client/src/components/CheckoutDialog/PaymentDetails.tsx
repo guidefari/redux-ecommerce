@@ -86,12 +86,6 @@ export function PaymentDetails() {
 		<Form {...form}>
 			<form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
 				<div className="space-y-8">
-					<div className="mb-6 text-center">
-						<h1 className="text-3xl font-bold ">Make a Payment</h1>
-						<p className="">
-							Enter your card details to complete the transaction.
-						</p>
-					</div>
 					<div className="space-y-4">
 						<FormField
 							control={form.control}

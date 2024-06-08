@@ -1,13 +1,23 @@
+import { Link } from "@tanstack/react-router";
 import type { SVGProps } from "react";
 import { CartModal } from "./CheckoutDialog";
 
 export function NavBar() {
 	return (
 		<header className="fixed top-0 flex items-center justify-between w-full h-16 px-4 border-b bg-theme-dark md:px-6">
-			<button type="button" className="flex items-center gap-2">
-				<MountainIcon className="w-6 h-6" />
-				<span className="text-lg font-semibold">Goosebumps</span>
-			</button>
+			<div className="flex gap-2">
+				<Link to="/">
+					<button type="button" className="flex items-center gap-2">
+						<MountainIcon className="w-6 h-6" />
+						<span className="text-lg font-semibold">Goosebumps</span>
+					</button>
+				</Link>
+				<Link to="/products">
+					<button type="button" className="flex items-center gap-2">
+						Products
+					</button>
+				</Link>
+			</div>
 
 			<CartModal />
 		</header>

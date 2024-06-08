@@ -1,14 +1,17 @@
-"use client";
-
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 import { Pagination } from "@/components/ui/pagination";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { createLazyFileRoute } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 
-export default function Component() {
+export const Route = createLazyFileRoute("/products")({
+	component: Component,
+});
+
+function Component() {
 	const [selectedFilters, setSelectedFilters] = useState({
 		categories: [],
 		priceRange: [0, 100],
@@ -63,6 +66,36 @@ export default function Component() {
 			title: "Comfy Joggers",
 			price: 39.99,
 		},
+		{
+			id: 423,
+			image: "/placeholder.svg",
+			title: "Elegant Dress",
+			price: 89.99,
+		},
+		{
+			id: 32,
+			image: "/placeholder.svg",
+			title: "Casdsual T-Shirt",
+			price: 24.99,
+		},
+		{
+			id: 236,
+			image: "/placeholder.svg",
+			title: "Durabsdle Backpack",
+			price: 69.99,
+		},
+		{
+			id: 723,
+			image: "/placeholder.svg",
+			title: "Chic sdBlazer",
+			price: 99.99,
+		},
+		{
+			id: 328,
+			image: "/placeholder.svg",
+			title: "Comfyds Joggers",
+			price: 39.99,
+		},
 	];
 	const filteredProducts = useMemo(() => {
 		return products
@@ -115,7 +148,7 @@ export default function Component() {
 		});
 	};
 	return (
-		<div className="grid md:grid-cols-[240px_1fr] gap-8 px-4 md:px-6 py-8">
+		<div className="grid md:grid-cols-[240px_1fr] gap-8 px-4 w-full ">
 			<div className="grid gap-6">
 				<Card>
 					<CardHeader>
