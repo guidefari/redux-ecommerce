@@ -1,4 +1,8 @@
 import { toast } from "@/components/ui/use-toast";
+import {
+	readFromLocalStorage,
+	writeToLocalStorage,
+} from "@/services/clientStorage";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import type { Product } from "@shared/types";
 import { createAppSlice } from "./createAppSlice";
@@ -12,7 +16,10 @@ export interface CartSlice {
 	products?: Array<CartProduct> | null;
 }
 
-const initialState: CartSlice = {
+const initialState: CartSlice = readFromLocalStorage({
+	tableName: "carts",
+	id: "wip",
+}) || {
 	id: null,
 	products: null,
 };
@@ -23,15 +30,22 @@ export const cartSlice = createAppSlice({
 	initialState,
 	reducers: (create) => ({
 		addToCart: create.reducer((state, action: PayloadAction<CartProduct>) => {
-			const showToast = () =>
+			const sideEffects = () => {
 				toast({
-					title: `✅ ${action.payload.name} added to cart`,
+					title: `⊕ ${action.payload.name} added to cart`,
 					duration: 1300,
 				});
 
+				writeToLocalStorage<CartSlice>({
+					tableName: "carts",
+					id: "wip",
+					data: { id: state.id, products: state.products },
+				});
+			};
+
 			if (!state.products) {
 				state.products = [action.payload];
-				showToast();
+				sideEffects();
 				return;
 			}
 
@@ -40,12 +54,12 @@ export const cartSlice = createAppSlice({
 			);
 			if (index === -1) {
 				state.products.push(action.payload);
-				showToast();
+				sideEffects();
 				return;
 			}
 
 			state.products[index].quantity += 1;
-			showToast();
+			sideEffects();
 			return;
 		}),
 		increment: create.reducer(
@@ -59,7 +73,23 @@ export const cartSlice = createAppSlice({
 					return;
 				}
 
+				const sideEffects = () => {
+					if (!state.products) return;
+
+					toast({
+						title: `⊕ ${state.products[index].name} added to cart`,
+						duration: 1300,
+					});
+
+					writeToLocalStorage<CartSlice>({
+						tableName: "carts",
+						id: "wip",
+						data: { id: state.id, products: state.products },
+					});
+				};
+
 				state.products[index].quantity += 1;
+				sideEffects();
 				return;
 			},
 		),
@@ -75,6 +105,23 @@ export const cartSlice = createAppSlice({
 				}
 
 				state.products[index].quantity -= 1;
+
+				const sideEffects = () => {
+					if (!state.products) return;
+
+					toast({
+						title: `⊖ 1 ${state.products[index].name} removed from cart`,
+						duration: 1300,
+						variant: "destructive",
+					});
+
+					writeToLocalStorage<CartSlice>({
+						tableName: "carts",
+						id: "wip",
+						data: { id: state.id, products: state.products },
+					});
+				};
+				sideEffects();
 
 				if (state.products[index].quantity === 0) {
 					state.products.splice(index, 1);

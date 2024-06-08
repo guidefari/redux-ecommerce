@@ -48,10 +48,13 @@ npx @biomejs/biome check --staged --files-ignore-unknown=true --no-errors-on-unm
 # Todo
 - ✅fetch data from frontend and put in a basic UI list.
 - ✅Might switch to tailwind, haven't used MUI in years💀
-## Current
-- [Async error handling, macro level](https://redux-toolkit.js.org/rtk-query/usage/error-handling#handling-errors-at-a-macro-level)
+- [ ] [Async error handling, macro level](https://redux-toolkit.js.org/rtk-query/usage/error-handling#handling-errors-at-a-macro-level)
 - [ ] cart should probably be in local storage. pass in the entire object as action, plus quantity
 - [ ] likely a good time for some unit tests. add to cart, remove from cart
+- [ ] When you click on a category on home screen, you get taken to view products with a pre-selected filter
+  - Also keep this state in the url 
+- [ ] Product details modal
+  - Try url state for this one too
 
 ## endpoints
   - ✅List All Products: GET 
