@@ -1,12 +1,12 @@
-type WriteToStorageInput = {
-	tableName: "products" | "addresses" | "cards";
+type WriteToStorageInput<T = unknown> = {
+	tableName: "products" | "addresses" | "cards" | "carts";
 	id: string;
-	data: unknown;
+	data: T;
 };
 
-type ReadFromStorage = Omit<WriteToStorageInput, "data">;
+type ReadFromStorage<T> = Omit<WriteToStorageInput<T>, "data">;
 
-export function readFromLocalStorage({ id, tableName }: ReadFromStorage) {
+export function readFromLocalStorage<T>({ id, tableName }: ReadFromStorage<T>) {
 	try {
 		const item = localStorage.getItem(`${tableName}-${id}`);
 		return item ? JSON.parse(item) : null;
@@ -16,11 +16,11 @@ export function readFromLocalStorage({ id, tableName }: ReadFromStorage) {
 	}
 }
 
-export function writeToLocalStorage({
+export function writeToLocalStorage<T>({
 	tableName,
 	id,
 	data,
-}: WriteToStorageInput) {
+}: WriteToStorageInput<T>) {
 	try {
 		const item = JSON.stringify(data);
 		localStorage.setItem(`${tableName}-${id}`, item);
