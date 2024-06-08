@@ -1,13 +1,5 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import {
-	Select,
-	SelectContent,
-	SelectItem,
-	SelectTrigger,
-	SelectValue,
-} from "@/components/ui/select";
 import {
 	readFromLocalStorage,
 	writeToLocalStorage,
@@ -20,7 +12,6 @@ import { DialogFooter } from "../ui/dialog";
 import {
 	Form,
 	FormControl,
-	FormDescription,
 	FormField,
 	FormItem,
 	FormLabel,
@@ -28,8 +19,9 @@ import {
 } from "../ui/form";
 import { useDispatch } from "./Context";
 
+const EXPIRY_DATE_REGEX = /^\d{2}\/\d{2}$/;
 const formSchema = z.object({
-	expiryDate: z.string().regex(/^\d{2}\/\d{2}$/, "Must be MM/YY"),
+	expiryDate: z.string().regex(EXPIRY_DATE_REGEX, "Must be MM/YY"),
 	cardNumber: z.number().min(16).max(20),
 	cvv: z.number().min(3).max(4),
 });
@@ -48,6 +40,7 @@ export function PaymentDetails() {
 			cvv: 0,
 			expiryDate: "",
 		},
+		mode: "onChange",
 	});
 
 	function onSubmit(values: z.infer<typeof formSchema>) {
@@ -59,12 +52,6 @@ export function PaymentDetails() {
 	// this should be on dialog close too
 	// context may come in handy
 	function onBack() {
-		// writeToLocalStorage({
-		// 	tableName: "addresses",
-		// 	id: "wip",
-		// 	data: form.getValues(),
-		// });
-
 		thisPatch({ type: "SET_STATE", payload: "address" });
 	}
 
@@ -80,15 +67,23 @@ export function PaymentDetails() {
 		};
 	}, []);
 
-	const onDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		console.log("e:", e);
-		const value = e.target.value;
-		const regex = /^\d{2}\/\d{2}$/;
+	// TODO: to be continued.
+	const handleChange = (
+		e: React.ChangeEvent<HTMLInputElement>,
+		fieldName: keyof z.infer<typeof formSchema>,
+	) => {
+		const { value } = e.target;
+		// const regex = /^\d{2}\/\d{2}$/;
 
-		if (value.match(regex)) {
-			const [month, day] = value.split("/");
-			e.target.value = `${month.padStart(2, "0")}/${day.padStart(2, "0")}`;
-		}
+		// if (value.match(regex)) {
+		// const [month, day] = value.split("/");
+		// e.target.value = `${month.padStart(2, "0")}/${day.padStart(2, "0")}`;
+		// }
+		form.setValue(fieldName, value, {
+			shouldDirty: true,
+			shouldValidate: true,
+		}); // <-- Set the form value
+		console.log(`${fieldName}: `, value);
 	};
 
 	return (
@@ -109,7 +104,11 @@ export function PaymentDetails() {
 								<FormItem>
 									<FormLabel>Card Number</FormLabel>
 									<FormControl>
-										<Input placeholder="0000 0000 0000 0001" {...field} />
+										<Input
+											maxLength={20}
+											placeholder="0000 0000 0000 0001"
+											{...field}
+										/>
 									</FormControl>
 									<FormMessage />
 								</FormItem>
@@ -125,13 +124,8 @@ export function PaymentDetails() {
 										<FormControl>
 											<Input
 												{...field}
-												// value={formatDate(field.value)}
-												onChange={(e) => onDateChange(e)}
-												// onChange={(e) => {
-												//   // Convert the input value to YYYY-MM-DD format
-												//   const formattedValue = e.target.value.replace(/\//g, '\/')
-												//   onChange(formattedValue);
-												// }}
+												onChange={(e) => handleChange(e, field.name)}
+												maxLength={5}
 												placeholder="MM/YY"
 											/>
 										</FormControl>
@@ -146,7 +140,7 @@ export function PaymentDetails() {
 									<FormItem>
 										<FormLabel>CVV</FormLabel>
 										<FormControl>
-											<Input placeholder="007" {...field} />
+											<Input maxLength={4} placeholder="007" {...field} />
 										</FormControl>
 										<FormMessage />
 									</FormItem>
