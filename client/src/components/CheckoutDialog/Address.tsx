@@ -1,6 +1,5 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import {
 	Select,
 	SelectContent,
@@ -20,7 +19,6 @@ import { DialogFooter } from "../ui/dialog";
 import {
 	Form,
 	FormControl,
-	FormDescription,
 	FormField,
 	FormItem,
 	FormLabel,
@@ -55,21 +53,11 @@ export function Address() {
 	});
 
 	function onSubmit(values: z.infer<typeof formSchema>) {
-		// Do something with the form values.
-		// ✅ This will be type-safe and validated.
 		console.log(values);
 		thisPatch({ type: "SET_STATE", payload: "payment" });
 	}
 
-	// this should be on dialog close too
-	// context may come in handy
 	function onBack() {
-		// writeToLocalStorage({
-		// 	tableName: "addresses",
-		// 	id: "wip",
-		// 	data: form.getValues(),
-		// });
-
 		thisPatch({ type: "SET_STATE", payload: "cart" });
 	}
 

@@ -44,13 +44,9 @@ export function PaymentDetails() {
 	});
 
 	function onSubmit(values: z.infer<typeof formSchema>) {
-		// Do something with the form values.
-		// ✅ This will be type-safe and validated.
 		console.log(values);
 	}
 
-	// this should be on dialog close too
-	// context may come in handy
 	function onBack() {
 		thisPatch({ type: "SET_STATE", payload: "address" });
 	}

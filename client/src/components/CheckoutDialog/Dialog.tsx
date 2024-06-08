@@ -5,12 +5,8 @@ import {
 	DialogTitle,
 	DialogTrigger,
 } from "@/components/ui/dialog";
-import {
-	selectCartQuantity,
-	selectCartTotal,
-	selectProducts,
-} from "@/store/cart";
-import { useAppDispatch, useAppSelector } from "@/store/hooks";
+import { selectCartQuantity } from "@/store/cart";
+import { useAppSelector } from "@/store/hooks";
 import { ShoppingCartIcon } from "../icons";
 import { Badge } from "../ui/badge";
 import { Address } from "./Address";
@@ -20,11 +16,7 @@ import { PaymentDetails } from "./PaymentDetails";
 
 export const Dialog = () => {
 	const cartCount = useAppSelector(selectCartQuantity);
-	const cartProcducts = useAppSelector(selectProducts);
-	const cartTotal = useAppSelector(selectCartTotal);
 	const state = useStateValue();
-	console.log("state:", state);
-	const dispatch = useAppDispatch();
 
 	return (
 		<BaseDialog>
