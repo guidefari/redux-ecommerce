@@ -15,7 +15,7 @@ export function Cart() {
 	const cartProcducts = useAppSelector(selectProducts);
 	const cartTotal = useAppSelector(selectCartTotal);
 	const dispatch = useAppDispatch();
-	const thisPatch = useDispatch();
+	const contextDispatch = useDispatch();
 
 	if (cartTotal === 0) {
 		return (
@@ -91,7 +91,9 @@ export function Cart() {
 			<DialogFooter>
 				<div className="flex justify-end">
 					<Button
-						onClick={() => thisPatch({ type: "SET_STATE", payload: "address" })}
+						onClick={() =>
+							contextDispatch({ type: "SET_STATE", payload: "address" })
+						}
 						className="hover:text-theme-highlight-secondary"
 					>
 						Checkout
