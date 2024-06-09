@@ -1,24 +1,38 @@
 # How to run
-Make sure you have bun installed.
-Then you start by installing modules:
+- Make sure you have [bun](https://bun.sh/) installed.
+- From the root directory, run:
 
 ```bash
 bun install
 ```
-
-To run client:
-
-```bash
-bun run dev:client
-```
-
-To run server:
+## Run server:
 
 ```bash
 bun run dev:server
 ```
 
-## Git pre-commit hook
+## To run client:
+
+First, you want to create a .env file in the `./client` directory. 
+You can copy paste the contents of `./client/.env.example`
+
+```bash
+bun run dev:client
+```
+
+### Sidenote:
+I did development against the live lambdas, I set my vite env variables as seen in `sst.config.ts`
+```ts
+const web = new sst.aws.StaticSite("ViteEcommerce", {
+			path: "client/",
+			build: {} ,
+			environment: {
+				VITE_API_BASE_URL: hono.url,
+			},
+		});
+```
+
+## I set up a git pre-commit hook
 
 I set up a simple pre-commit hook on my laptop.
 Bash script located at: `./git/hooks/pre-commit`:
@@ -33,8 +47,9 @@ npx @biomejs/biome check --staged --files-ignore-unknown=true --no-errors-on-unm
 
 
 ## Architectural choices
-- Switching to monorepo for quicker iteration between FE & BE.
+- Switched to monorepo for quicker iteration between FE & BE.
   - I strongly considered going with NextJS, my default for fullstack TS apps.
+- Deployed to AWS via [SST](https://ion.sst.dev/).
 
 
 ## Resources
@@ -52,15 +67,15 @@ npx @biomejs/biome check --staged --files-ignore-unknown=true --no-errors-on-unm
 - [ ] cart should probably be in local storage. pass in the entire object as action, plus quantity
 - [ ] likely a good time for some unit tests. add to cart, remove from cart
 - [ ] When you click on a category on home screen, you get taken to view products with a pre-selected filter
-  - Also keep this state in the url 
+  - Also keep this state in the url
 - [ ] Product details modal
   - Try url state for this one too
 
 ## endpoints
-  - ✅List All Products: GET 
+  - ✅List All Products: GET
     - filter - can be handled on frontend?
     - sort - can be handled on frontend?
-  - ✅List Featured products: GET 
+  - ✅List Featured products: GET
   - ✅Single Product details: GET, :id
   - ✅List categories: GET
   - ✅List All products in category: GET, :id
