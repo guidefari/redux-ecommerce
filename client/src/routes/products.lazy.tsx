@@ -27,8 +27,14 @@ export const Route = createLazyFileRoute("/products")({
 	component: Component,
 });
 
+type Filter = {
+	categories: Array<string>;
+	priceRange: [number, number];
+	sortBy: string;
+};
+
 function Component() {
-	const [selectedFilters, setSelectedFilters] = useState({
+	const [selectedFilters, setSelectedFilters] = useState<Filter>({
 		categories: [],
 		priceRange: [0, 10000],
 		sortBy: "popularity",
@@ -67,21 +73,18 @@ function Component() {
 			.sort((a, b) => {
 				if (selectedFilters.sortBy === "price-asc") {
 					return a.price - b.price;
-				} else if (selectedFilters.sortBy === "price-desc") {
-					return b.price - a.price;
-				} else {
-					return 0;
 				}
+				return b.price - a.price;
 			});
 	}, [selectedFilters, products]);
 
 	const [currentPage, setCurrentPage] = useState(1);
 	const itemsPerPage = 8;
 	const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
-	const handlePageChange = (page) => {
+	const handlePageChange = (page: number) => {
 		setCurrentPage(page);
 	};
-	const handleCategoryFilter = (category) => {
+	const handleCategoryFilter = (category: string) => {
 		setSelectedFilters({
 			...selectedFilters,
 			categories: selectedFilters.categories.includes(category)
@@ -89,13 +92,13 @@ function Component() {
 				: [...selectedFilters.categories, category],
 		});
 	};
-	const handlePriceRangeFilter = (range) => {
+	const handlePriceRangeFilter = (range: [number, number]) => {
 		setSelectedFilters({
 			...selectedFilters,
 			priceRange: range,
 		});
 	};
-	const handleSortByFilter = (sortBy) => {
+	const handleSortByFilter = (sortBy: string) => {
 		setSelectedFilters({
 			...selectedFilters,
 			sortBy,
