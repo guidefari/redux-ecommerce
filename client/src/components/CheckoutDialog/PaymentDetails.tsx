@@ -27,7 +27,7 @@ const formSchema = z.object({
 });
 
 export function PaymentDetails() {
-	const thisPatch = useDispatch();
+	const contextDispatch = useDispatch();
 	const WIP: z.infer<typeof formSchema> = readFromLocalStorage({
 		tableName: "cards",
 		id: "wip",
@@ -48,7 +48,7 @@ export function PaymentDetails() {
 	}
 
 	function onBack() {
-		thisPatch({ type: "SET_STATE", payload: "address" });
+		contextDispatch({ type: "SET_STATE", payload: "address" });
 	}
 
 	// biome-ignore lint/correctness/useExhaustiveDependencies: <shhhh. this isn't a problem>

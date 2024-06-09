@@ -4,14 +4,16 @@ import { Link, Outlet, createRootRoute } from "@tanstack/react-router";
 import { TanStackRouterDevtools } from "@tanstack/router-devtools";
 
 export const Route = createRootRoute({
-  component: () => (
-    <>
-      <NavBar />
-      <main className="w-full overflow-hidden overflow-y-auto font-inter ">
-        <Outlet />
-      </main>
-      <TanStackRouterDevtools />
-      <Toaster />
-    </>
-  ),
+	component: () => (
+		<>
+			<div className="flex flex-col">
+				<NavBar />
+				<main className="w-full h-full flex-1 font-inter ">
+					<Outlet />
+				</main>
+			</div>
+			<TanStackRouterDevtools />
+			<Toaster />
+		</>
+	),
 });
