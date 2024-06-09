@@ -6,8 +6,8 @@ import { TanStackRouterDevtools } from "@tanstack/router-devtools";
 export const Route = createRootRoute({
   component: () => (
     <>
-      <main className="w-full pt-16 overflow-hidden overflow-y-auto font-inter ">
-        <NavBar />
+      <NavBar />
+      <main className="w-full overflow-hidden overflow-y-auto font-inter ">
         <Outlet />
       </main>
       <TanStackRouterDevtools />
