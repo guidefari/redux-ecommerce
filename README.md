@@ -13,7 +13,7 @@ bun run dev:server
 
 ## To run client:
 
-First, you want to create a .env file in the `./client` directory. 
+First, you want to create a .env file in the `./client` directory.
 You can copy paste the contents of `./client/.env.example`
 
 ```bash
@@ -63,15 +63,16 @@ npx @biomejs/biome check --staged --files-ignore-unknown=true --no-errors-on-unm
 # Todo
 - ✅fetch data from frontend and put in a basic UI list.
 - ✅Might switch to tailwind, haven't used MUI in years💀
+- ✅ cart should probably be in local storage. pass in the entire object as action, plus quantity
+- ✅ likely a good time for some unit tests. add to cart, remove from cart
 - [ ] [Async error handling, macro level](https://redux-toolkit.js.org/rtk-query/usage/error-handling#handling-errors-at-a-macro-level)
-- [ ] cart should probably be in local storage. pass in the entire object as action, plus quantity
-- [ ] likely a good time for some unit tests. add to cart, remove from cart
 - [ ] When you click on a category on home screen, you get taken to view products with a pre-selected filter
   - Also keep this state in the url
 - [ ] Product details modal
   - Try url state for this one too
+- [ ] UX: Bandcamp inspired checkout modal?
 
-## endpoints
+## BE endpoints
   - ✅List All Products: GET
     - filter - can be handled on frontend?
     - sort - can be handled on frontend?
@@ -81,6 +82,3 @@ npx @biomejs/biome check --staged --files-ignore-unknown=true --no-errors-on-unm
   - ✅List All products in category: GET, :id
   - Checkout: POST
   - ✅List Discounted Products: GET
-
-## UX
-- Bandcamp inspired checkout modal?
