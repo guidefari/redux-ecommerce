@@ -5,9 +5,11 @@ export function getIntersectionByField<T, K extends keyof T>(
 ): T[] {
 	if (arr1.length === 0 || arr2.length === 0) return [];
 
-	const valuesToMatch = arr2.map((obj) => obj[field]).filter((v) => !!v);
+	const valuesToMatch = new Set(
+		arr2.map((obj) => obj[field]).filter((v) => !!v),
+	);
 
-	if (valuesToMatch.length === 0) return [];
+	if (valuesToMatch.size === 0) return [];
 
-	return arr1.filter((obj1) => valuesToMatch.includes(obj1[field]));
+	return arr1.filter((obj1) => valuesToMatch.has(obj1[field]));
 }
